@@ -50,6 +50,12 @@ public class User {
 	public void setUser_enable(int user_enable) {
 		this.user_enable = user_enable;
 	}
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_password=" + user_password
+				+ ", user_role=" + user_role + ", user_cretetime=" + user_cretetime + ", user_enable=" + user_enable
+				+ "]";
+	}
 
 	
 }

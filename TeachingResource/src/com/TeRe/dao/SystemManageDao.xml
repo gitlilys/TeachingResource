@@ -7,5 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addUser" parameterType="com.TeRe.domain.User">
 		insert into tb_user values(#{user_id},#{user_name},#{user_password},#{user_role},#{user_cretetime},#{user_enable})
 	</insert>
+	<select id="selectOne" parameterType="String" resultType="com.TeRe.domain.User">
+		select * from tb_user where user_name=#{user_name}	
+	</select>
+	
+	<select id="selectAll" resultType="com.TeRe.domain.User">
+		select * from tb_user
+	</select>
+	
+	<delete id="deteleUser" parameterType="com.TeRe.domain.User">
+		delete from tb_user where user_name=#{user_name}
+	</delete>
 	
 </mapper> 
