@@ -73,3 +73,17 @@ CREATE TABLE `tb_user` (
   `user_enable` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ----------------------------
+-- Table structure for tb_web
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_web`;
+CREATE TABLE `tb_web` (
+`web_id` int(11) NOT NULL,
+`web_url` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`web_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ----------------------------  
+-- Records of tb_web  
+-- ----------------------------  
+INSERT INTO `tb_web` VALUES ('1', 'http://www.baidu.com'); 
+

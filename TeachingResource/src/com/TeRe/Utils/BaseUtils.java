@@ -3,7 +3,7 @@ package com.TeRe.Utils;
 import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.mail.HtmlEmail;
+//import org.apache.commons.mail.HtmlEmail;
 
 public class BaseUtils {
 
