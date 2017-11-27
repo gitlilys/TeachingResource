@@ -65,25 +65,16 @@ public class SystemManageController {
 		System.out.println(name);
 		User user = systemManageService.selectOne(name);
 		System.out.println(user);
-		request.setAttribute("user_id", user.getUser_id());
-		request.setAttribute("user_name", user.getUser_name());
-		request.setAttribute("user_password", user.getUser_password());
-		request.setAttribute("user_role", user.getUser_role());
-		request.setAttribute("user_cretetime", user.getUser_cretetime());
-		request.setAttribute("user_enable", user.getUser_enable());
-		return "redirect:/selectAllList.jsp";
+		request.setAttribute("user", user);
+		return null;
 	}
 	
 	@RequestMapping(value="/TeRe/selectAll")
 	public String selectAll(HttpServletRequest request, HttpServletResponse response){
 		List<User> users = systemManageService.selectAll();
-		for(User user:users){
-			System.out.println("user:"+user);
-//			Map<String, User> map=new HashMap<String, User>();
-//			map.put("user", user);
-		}
-		return null;
-//		return "redirect:selectAllList.jsp";
+		request.setAttribute("users", users);
+		
+		return "forward:/selectAllList.jsp";
 	}
 	
 	

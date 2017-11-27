@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,18 +20,21 @@
         <th>有效否</th>
         <th>操作</th>
  	</tr>
+    <c:forEach items="${requestScope.users}" var="user">
+	    <tr>
+	    	<td>${user.user_id }</td>
+	        <td>${user.user_name }</td>
+	        <td>${user.user_password }</td>
+	        <td>${user.user_role }</td>
+	        <td>${user.user_cretetime }</td>
+	        <td>${user.user_enable }</td>
+	        <td><a href="${pageContext.request.contextPath }/TeRe/deteleUser?user_name=${user.user_name }">删除</a></td>
+	    </tr>
+     </c:forEach>
     <tr>
-    	<td>${requestScope.user_id }</td>
-        <td>${requestScope.user_name }</td>
-        <td>${requestScope.user_password }</td>
-        <td>${requestScope.user_role }</td>
-        <td>${requestScope.user_cretetime }</td>
-        <td>${requestScope.user_enables }</td>
-        <td><a href="">删除</a></td>
+    	<td colspan="7" align="center"><a href="${pageContext.request.contextPath}/add.jsp">【添加用户】</a>
     </tr>
-    <tr>
-    	<td colspan="7" align="center"><a href="">【添加用户】</a>
-    </tr>
+
 </table>
 </body>
 </html>
