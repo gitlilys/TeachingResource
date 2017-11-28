@@ -1,8 +1,8 @@
 package com.TeRe.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;  
-import java.io.PrintWriter;
+//import java.io.IOException;  
+//import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import com.TeRe.domain.User;
 import com.TeRe.service.SystemManageService;
 import java.util.List;
 @Controller
+
 public class SystemManageController {
 
 	@Autowired
@@ -42,12 +43,15 @@ public class SystemManageController {
 	        }  
 	    }
 	 
-	 @RequestMapping(value="/getAllUser")  
-	    public String getAllUser(HttpServletRequest request,Model model){  
-	        List<User> user = systemManageService.findAll();  
+	 @RequestMapping(value="/getAllUser")
+	
+	    public String getAllUser(HttpServletRequest request,Model model){ 
+		 
+	       List<User> user = systemManageService.findAll();
 	        model.addAttribute("userList", user);  
-	        request.setAttribute("userList", user);  
-	        return "redirect:/allWeb.jsp";  
+	        request.setAttribute("userList", user);
+		 return "forward:/allWeb.jsp";
+	          
 	    } 
 	 
 	 @RequestMapping(value="/addUser")  
@@ -60,22 +64,25 @@ public class SystemManageController {
 	    public String getUser(int web_id,HttpServletRequest request,Model model){  
 	        request.setAttribute("user", systemManageService.findById(web_id));  
 	        model.addAttribute("user", systemManageService.findById(web_id));  
-	        return "redirect:/editWeb.jsp";  
+	        return "forward:/editWeb.jsp";  
 	    } 
 	 
 	 @RequestMapping(value="/delUser")  
-	    public void delUser(int web_id,HttpServletRequest request,HttpServletResponse response){  
-	        String result = "{\"result\":\"error\"}";  
+	    public String delUser(int web_id,HttpServletRequest request,HttpServletResponse response){  
+	        //String result = "{\"result\":\"error\"}";  
 	        if(systemManageService.delete(web_id)){  
-	            result = "{\"result\":\"success\"}";  
+	            //result = "{\"result\":\"success\"}";
+	        	
 	        }  
-	        response.setContentType("application/json");  
-	        try {  
+	        response.setContentType("application/json");
+	        return "redirect:/getAllUser";
+	        
+	       /* try {  
 	            PrintWriter out = response.getWriter();  
 	            out.write(result);  
 	        } catch (IOException e) {  
 	            e.printStackTrace();  
-	        }  
-	    }  
+	        } */  
+	    } 
 	
 }
