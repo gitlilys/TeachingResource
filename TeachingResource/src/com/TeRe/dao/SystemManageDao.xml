@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.TeRe.dao.SystemManageDao">
+	
+	<insert id="addUser" parameterType="com.TeRe.domain.User">
+		insert into tb_web values(#{web_id},#{web_url})
+	</insert>
+	<update id="update" parameterType="User">    
+        update tb_web set web_id=#{web_id},web_url=#{web_url} where web_id=#{web_id}    
+    </update>   
+      
+    <delete id="delete" parameterType="int">    
+        delete from tb_web where web_id=#{web_id}    
+    </delete>
+    <select id="findById" parameterType="int" resultType="User">    
+        select web_id,web_url from tb_web where web_id=#{web_id}    
+    </select>    
+        
+    <select id="findAll" resultType="User">    
+        select web_id,web_url from tb_web    
+    </select>      
+	
+</mapper> 
